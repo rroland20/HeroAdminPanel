@@ -1,40 +1,16 @@
 {
   "heroes": [
     {
-      "id": "1",
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
-      "element": "water"
-    },
-    {
-      "id": "3",
-      "name": "Земеля",
-      "description": "Кидает камни",
-      "element": "earth"
-    },
-    {
       "id": "cc2dbd87-613f-4d2b-b6e8-2e65cfdb685b",
       "name": "dvs",
       "description": "svd",
       "element": "wind"
     },
     {
-      "id": "498281fc-f16a-49c7-879c-5cefbbd500a9",
-      "name": "Туманова Алена",
-      "description": "sdv",
+      "id": "6c31a045-c4b2-4c44-ac22-6af5537e0858",
+      "name": "fgfctgfcg",
+      "description": "wrer",
       "element": "fire"
-    },
-    {
-      "id": "6bb7a8fb-4800-4a64-aedd-4112d015bf16",
-      "name": "sdf",
-      "description": "sdf",
-      "element": "wind"
-    },
-    {
-      "id": "6478f08e-eb9b-442a-b79b-0f05df076558",
-      "name": "ddd",
-      "description": "ffff",
-      "element": "water"
     }
   ],
   "filters": [

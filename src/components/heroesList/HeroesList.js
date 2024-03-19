@@ -7,13 +7,18 @@ import { heroesFetching, heroesFetched, heroesFetchingError, heroesDelete } from
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
-// Задача для этого компонента:
-// При клике на "крестик" идет удаление персонажа из общего состояния
-// Усложненная задача:
-// Удаление идет и с json файла при помощи метода DELETE
+import './heroesList.scss';
 
 const HeroesList = () => {
-    const {filteredHeroes, heroesLoadingStatus} = useSelector(state => state);
+    const filteredHeroes = useSelector(state => {
+        if (state.filters.activeFilter === 'all') {
+            return state.heroes.heroes;
+        }
+        else {
+            return state.heroes.heroes.filter(item => item.element === state.filters.activeFilter)
+        }
+    });
+    const heroesLoadingStatus = useSelector(state => state.heroesLoadingStatus);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
