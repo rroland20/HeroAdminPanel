@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFilters, activeFilterChanged, selectAll } from "../heroesFilters/filtersSlice";
-import Spinner from "../spinner/Spinner";
+import { fetchFilters, activeFilterChanged, selectAll } from "./filtersSlice";
+import Spinner from "../../../src/widgets/spinner/ui/Spinner";
 import classNames from "classnames";
-import store from "../../store";
+import store from "../../../src/app/appStore";
 
 const HeroesFilters = () => {
     const dispatch = useDispatch();
