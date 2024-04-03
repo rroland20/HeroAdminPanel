@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 
 import { selectAll } from "../heroesFilters/filtersSlice";
-import store from "../../app/appStore";
-import { useCreateHeroMutation } from "../../features/services/apiSlice";
+import {store} from "../../app/appStore";
+import { useCreateHeroMutation } from "../../shared/api/apiSlice";
 
 
 const HeroesAddForm = () => {
