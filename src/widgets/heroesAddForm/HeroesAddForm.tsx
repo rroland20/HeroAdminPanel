@@ -2,19 +2,19 @@ import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 
-import { useCreateHeroMutation } from "../../shared/api/apiSlice";
+import { useCreateHeroMutation } from "../../shared/api/apiSlice.ts";
 
 
 const HeroesAddForm = () => {
-    const [nameHero, setNameHero] = useState();
-    const [descrHero, setDescrHero] = useState();
-    const [elemHero, setElemHero] = useState();
+    const [nameHero, setNameHero] = useState<string>();
+    const [descrHero, setDescrHero] = useState<string>();
+    const [elemHero, setElemHero] = useState<string>();
 
     const [createHero] = useCreateHeroMutation();
 
-    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
+    const {filters, filtersLoadingStatus} = useSelector<Array<object>>(state => state.filters);
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newHero = {
             id: uuidv4(),
@@ -31,7 +31,7 @@ const HeroesAddForm = () => {
         
     }
 
-    const selectElement = (filters, status) => {
+    const selectElement = (filters: Array<object>, status: string) => {
         if (status === "loading") {
             return <option>Загрузка элементов</option>
         }

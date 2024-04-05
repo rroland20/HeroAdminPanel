@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import filters from '../widgets/heroesFilters/filtersSlice';
-import { apiSlice } from '../shared/api/apiSlice';
+import { apiSlice } from '../shared/api/apiSlice.ts';
 
 const stringMiddleware = () => (next) => (action) => {
      if (typeof action === 'string') {

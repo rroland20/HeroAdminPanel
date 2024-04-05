@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import App from './app/appEntry';
-import {store} from './app/appStore';
+import App from './app/appEntry.tsx';
+import {store} from './app/appStore.tsx';
 
 import './app/appStyle.scss';
 
