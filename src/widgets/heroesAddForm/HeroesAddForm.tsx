@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { useCreateHeroMutation } from "../../shared/api/apiSlice";
 import { Filters } from "./types";
+import { ISomeState } from "../heroesFilters/filtersSlice";
 
 const HeroesAddForm = () => {
     const [nameHero, setNameHero] = useState<string>();
@@ -12,7 +13,7 @@ const HeroesAddForm = () => {
 
     const [createHero] = useCreateHeroMutation();
     
-    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
+    const {filters, filtersLoadingStatus} = useSelector<ISomeState>(state => state.filters);
 
     // const filters : Filters = {};
 
