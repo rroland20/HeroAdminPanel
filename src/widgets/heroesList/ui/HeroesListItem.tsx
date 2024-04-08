@@ -1,7 +1,7 @@
 
 const HeroesListItem = ({name, description, element, onDelete}) => {
 
-    let elementClassName;
+    let elementClassName: string;
 
     switch (element) {
         case 'fire':

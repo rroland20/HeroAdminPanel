@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 
-import { useCreateHeroMutation } from "../../shared/api/apiSlice.ts";
-
+import { useCreateHeroMutation } from "../../shared/api/apiSlice";
+import { Filters } from "./types";
 
 const HeroesAddForm = () => {
     const [nameHero, setNameHero] = useState<string>();
@@ -11,8 +11,10 @@ const HeroesAddForm = () => {
     const [elemHero, setElemHero] = useState<string>();
 
     const [createHero] = useCreateHeroMutation();
+    
+    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
 
-    const {filters, filtersLoadingStatus} = useSelector<Array<object>>(state => state.filters);
+    // const filters : Filters = {};
 
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,7 +33,7 @@ const HeroesAddForm = () => {
         
     }
 
-    const selectElement = (filters: Array<object>, status: string) => {
+    const selectElement = (filters: Array<Filters>, status: string) => {
         if (status === "loading") {
             return <option>Загрузка элементов</option>
         }
@@ -40,7 +42,7 @@ const HeroesAddForm = () => {
         }
 
         if (filters && filters.length > 0) {
-            return filters.map(({name, label}) => {
+            return filters.map(({name, label}: Filters) => {
                 // eslint-disable-next-line
                 if (name === 'all') return;
 

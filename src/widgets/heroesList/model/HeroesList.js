@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
-import { useGetHeroesQuery, useDeleteHeroMutation } from '../../../shared/api/apiSlice.ts';
+import { useGetHeroesQuery, useDeleteHeroMutation } from '../../../shared/api/apiSlice';
 import HeroesListItem from "../ui/HeroesListItem";
 import Spinner from '../../spinner/ui/Spinner';
 
