@@ -5,6 +5,8 @@ import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import { useGetHeroesQuery, useDeleteHeroMutation } from '../../../shared/api/apiSlice';
 import HeroesListItem from "../ui/HeroesListItem";
 import Spinner from '../../spinner/ui/Spinner';
+import { ISomeState } from '../../heroesFilters/model/types';
+import { HeroesListType } from './types';
 
 import './heroesList.scss';
 
@@ -14,9 +16,10 @@ const HeroesList = () => {
         data: heroes = [],
         isLoading,
         isError,
-    } = useGetHeroesQuery();
+    } = useGetHeroesQuery({});
 
-    const activeFilter = useSelector(state => state.filters.activeFilter);
+    const activeFilter = useSelector((state: { filters: ISomeState }) => state.filters.activeFilter);
+    
     const [deleteHero] = useDeleteHeroMutation();
 
     const filteredHeroes = useMemo (() => {
@@ -25,12 +28,12 @@ const HeroesList = () => {
             return filteredHeroes;
         }
         else {
-            return filteredHeroes.filter(item => item.element === activeFilter)
+            return filteredHeroes.filter((item: HeroesListType) => item.element === activeFilter)
         }
         // eslint-disable-next-line
     }, [heroes, activeFilter])
 
-    const onDelete = useCallback((id) => {
+    const onDelete = useCallback((id : string) => {
         deleteHero(id);        
         // eslint-disable-next-line
     }, []);
@@ -42,7 +45,7 @@ const HeroesList = () => {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
 
-    const renderHeroesList = (arr) => {
+    const renderHeroesList = (arr : HeroesListType[]) => {
         if (arr.length === 0) {
             return <CSSTransition 
                         timeout={0}

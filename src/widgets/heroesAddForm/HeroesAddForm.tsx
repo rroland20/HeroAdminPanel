@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 
 import { useCreateHeroMutation } from "../../shared/api/apiSlice";
-import { Filters } from "./types";
-import { ISomeState } from "../heroesFilters/filtersSlice";
+import { Filters, ISomeState } from "../heroesFilters/model/types";
 
 const HeroesAddForm = () => {
     const [nameHero, setNameHero] = useState<string>();
@@ -13,9 +12,7 @@ const HeroesAddForm = () => {
 
     const [createHero] = useCreateHeroMutation();
     
-    const {filters, filtersLoadingStatus} = useSelector<ISomeState>(state => state.filters);
-
-    // const filters : Filters = {};
+    const {filters, filtersLoadingStatus} = useSelector((state: { filters: ISomeState }) => state.filters);
 
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

@@ -1,18 +1,10 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
-import { useHttp } from "../../shared/model/http.hook";
-import { log } from "console";
+import { useHttp } from "../../../shared/model/http.hook";
+import { EntityState } from '@reduxjs/toolkit';
+import { ISomeState } from "./types";
+
 
 const filtersAdapter = createEntityAdapter();
-
-type LoadingType = 'idle' | 'loading' | 'error';
-type ActiveFilterType = 'all' | 'fire' | 'water' | 'wind' | 'earth';
-type filtersType = 'id' | 'name' | 'label' | 'className';
-
-export interface ISomeState {
-   filters: Array<filtersType>;
-   filtersLoadingStatus: LoadingType;
-   activeFilter: ActiveFilterType;
-}
 
 const initialState : ISomeState = filtersAdapter.getInitialState({
     filters: [],
@@ -38,11 +30,10 @@ const filtersSlice = createSlice({
         builder
             .addCase(fetchFilters.pending, state => {state.filtersLoadingStatus = 'loading';})
             .addCase(fetchFilters.fulfilled, (state, action) => {
-                
+                const actualState = state as unknown as EntityState<unknown>;
                 state.filters = action.payload;
-                console.log(typeof state.filters);
                 state.filtersLoadingStatus = 'idle';
-                filtersAdapter.setAll(state, action.payload);
+                filtersAdapter.setAll(actualState, action.payload);
             })
             .addCase(fetchFilters.rejected, state => {state.filtersLoadingStatus = 'error';})
             .addDefaultCase(() => {})
@@ -53,8 +44,5 @@ const {actions, reducer} = filtersSlice;
 
 export default reducer;
 export const {
-    filtersFetching,
-    filtersFetched,
-    filtersFetchingError,
     activeFilterChanged
 } = actions;
