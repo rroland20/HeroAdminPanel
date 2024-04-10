@@ -7,34 +7,22 @@
       "element": "wind"
     },
     {
-      "id": "a6dfe8df-8dfe-4ad3-bf6e-292eba07f189",
-      "name": "asd",
-      "description": "dkdkdk",
-      "element": "earth"
-    },
-    {
       "id": "0ad932eb-4b26-43d9-9d21-2f7807d90a52",
       "name": "смм",
       "description": "авмам",
       "element": "fire"
     },
     {
-      "id": "38f7559f-aeed-437b-a9d3-cf4abfca30bb",
-      "name": "dfgdf",
-      "description": "23453345",
+      "id": "addee2fb-8619-4880-bf4f-4ae6cb709718",
+      "name": "gfffd",
+      "description": "34344",
+      "element": "earth"
+    },
+    {
+      "id": "0e99fe01-26c7-4c96-b22c-d749a5316297",
+      "name": "dsdf",
+      "description": "234324",
       "element": "wind"
-    },
-    {
-      "id": "6d83aa8e-4c44-411c-8b67-3f4f6cb96c87",
-      "name": "sgssssss",
-      "description": "wwwwwwwww",
-      "element": "water"
-    },
-    {
-      "id": "7d760a15-54c3-4364-baf1-0d95294bf539",
-      "name": "asd",
-      "description": "впкппв",
-      "element": "water"
     }
   ],
   "filters": [

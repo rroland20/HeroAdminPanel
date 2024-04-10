@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFilters, activeFilterChanged } from "../model/filtersSlice";
 import Spinner from "../../spinner/ui/Spinner";
 import classNames from "classnames";
-import { ISomeState } from "../model/types";
+import { ISomeState, Filters } from "../model/types";
 
 const HeroesFilters = () => {
     const dispatch = useDispatch();
@@ -20,11 +20,11 @@ const HeroesFilters = () => {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>;
     }
 
-    const renderFilteredHero = (arr) => {
-        if (arr.lenght === 0)
+    const renderFilteredHero = (arr : Filters[]) => {
+        if (arr.length === 0)
             return <h5 className="text-center mt-5">Фильтры не найдены</h5>
 
-        return arr.map(({name, label, className}) => {
+        return arr.map(({name, label, className}: Filters) => {
             const btnClass = classNames("btn", className, {
                 'active': name === activeFilter
             })

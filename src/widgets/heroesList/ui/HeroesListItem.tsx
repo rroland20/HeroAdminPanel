@@ -1,5 +1,6 @@
+import { HeroesListType } from "../model/types";
 
-const HeroesListItem = ({name, description, element, onDelete}) => {
+const HeroesListItem = ({name, description, element, onDelete} : HeroesListType) => {
 
     let elementClassName: string;
 

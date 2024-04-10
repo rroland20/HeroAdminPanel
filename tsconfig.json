@@ -1,6 +1,13 @@
 {
     "compilerOptions": {
       "jsx": "react-jsx",
-      "esModuleInterop": true
+      "esModuleInterop": true,
+
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
     },
+    "include": ["src"],
 }
