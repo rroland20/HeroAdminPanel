@@ -1,4 +1,4 @@
-export type HeroesListType = {
+export type tHeroesList = {
     id?: string;
     name: string;
     description: string;

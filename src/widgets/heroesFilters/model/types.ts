@@ -1,18 +1,18 @@
 
-export type FilterForHero = {
+export type tFilterForHero = {
     id: string;
     name: string;
     label: string;
     className: string;
 };
 
-export enum FiltersStatus {
+export enum eFiltersStatus {
     Idle = 'idle',
     Loading = 'loading',
     Error = 'error',
 };
 
-export enum ActiveFilterStatus {
+export enum eActiveFilterStatus {
     All = 'all',
     Fire = 'fire',
     Water = 'water',
@@ -20,8 +20,8 @@ export enum ActiveFilterStatus {
     Earth = 'earth',
 };
 
-export interface FiltersState {
-   filters: FilterForHero[];
-   filtersLoadingStatus: FiltersStatus;
-   activeFilter: ActiveFilterStatus;
+export interface iFiltersState {
+   filters: tFilterForHero[];
+   filtersLoadingStatus: eFiltersStatus;
+   activeFilter: eActiveFilterStatus;
 };
