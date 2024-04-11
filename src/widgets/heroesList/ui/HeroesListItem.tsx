@@ -1,20 +1,21 @@
 import { HeroesListType } from "../model/types";
+import { ActiveFilterStatus } from "../../heroesFilters/model/types";
 
 const HeroesListItem = ({name, description, element, onDelete} : HeroesListType) => {
 
     let elementClassName: string;
 
     switch (element) {
-        case 'fire':
+        case ActiveFilterStatus.Fire:
             elementClassName = 'bg-danger bg-gradient';
             break;
-        case 'water':
+        case ActiveFilterStatus.Water:
             elementClassName = 'bg-primary bg-gradient';
             break;
-        case 'wind':
+        case ActiveFilterStatus.Wind:
             elementClassName = 'bg-success bg-gradient';
             break;
-        case 'earth':
+        case ActiveFilterStatus.Earth:
             elementClassName = 'bg-secondary bg-gradient';
             break;
         default:

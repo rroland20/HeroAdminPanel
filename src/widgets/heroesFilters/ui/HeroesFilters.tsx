@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFilters, activeFilterChanged } from "../model/filtersSlice";
 import Spinner from "../../spinner/ui/Spinner";
 import classNames from "classnames";
-import { ISomeState, Filters } from "../model/types";
+import { FiltersState, FilterForHero } from "../model/types";
 
 const HeroesFilters = () => {
     const dispatch = useDispatch();
-    const {filters, filtersLoadingStatus, activeFilter} = useSelector((state: { filters: ISomeState }) => state.filters);
+    const {filters, filtersLoadingStatus, activeFilter} = useSelector((state: { filters: FiltersState }) => state.filters);
     useEffect(() => {
         dispatch(fetchFilters());
         // eslint-disable-next-line
@@ -20,11 +20,11 @@ const HeroesFilters = () => {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>;
     }
 
-    const renderFilteredHero = (arr : Filters[]) => {
-        if (arr.length === 0)
+    const renderFilteredHero = (arr : FilterForHero[]) => {
+        if (!arr.length)
             return <h5 className="text-center mt-5">Фильтры не найдены</h5>
 
-        return arr.map(({name, label, className}: Filters) => {
+        return arr.map(({name, label, className}: FilterForHero) => {
             const btnClass = classNames("btn", className, {
                 'active': name === activeFilter
             })

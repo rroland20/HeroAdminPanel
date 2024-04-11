@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 
 import { useCreateHeroMutation } from "../../shared/api/apiSlice";
-import { Filters, ISomeState } from "../heroesFilters/model/types";
+import { FilterForHero, FiltersState } from "../heroesFilters/model/types";
+import { FiltersStatus, ActiveFilterStatus } from "../heroesFilters/model/types";
 
 const HeroesAddForm = () => {
     const [nameHero, setNameHero] = useState<string>();
@@ -12,7 +13,7 @@ const HeroesAddForm = () => {
 
     const [createHero] = useCreateHeroMutation();
     
-    const {filters, filtersLoadingStatus} = useSelector((state: { filters: ISomeState }) => state.filters);
+    const {filters, filtersLoadingStatus} = useSelector((state: { filters: FiltersState }) => state.filters);
 
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,18 +32,18 @@ const HeroesAddForm = () => {
         
     }
 
-    const selectElement = (filters: Array<Filters>, status: string) => {
-        if (status === "loading") {
+    const selectElement = (filters: Array<FilterForHero>, status: string) => {
+        if (status === FiltersStatus.Loading) {
             return <option>Загрузка элементов</option>
         }
-        else if (status === "error") {
+        else if (status === FiltersStatus.Error) {
             return <option>Ошибка загрузки элементов</option>
         }
 
         if (filters && filters.length > 0) {
-            return filters.map(({name, label}: Filters) => {
+            return filters.map(({name, label}: FilterForHero) => {
                 // eslint-disable-next-line
-                if (name === 'all') return;
+                if (name === ActiveFilterStatus.All) return;
 
                 return <option key={name} value={name}>{label}</option>;
             })

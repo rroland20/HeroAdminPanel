@@ -1,15 +1,27 @@
-export type Filters = {
+
+export type FilterForHero = {
     id: string;
     name: string;
     label: string;
     className: string;
 };
 
-type LoadingType = 'idle' | 'loading' | 'error';
-type ActiveFilterType = 'all' | 'fire' | 'water' | 'wind' | 'earth';
+export enum FiltersStatus {
+    Idle = 'idle',
+    Loading = 'loading',
+    Error = 'error',
+};
 
-export interface ISomeState {
-   filters: Filters[];
-   filtersLoadingStatus: LoadingType;
-   activeFilter: ActiveFilterType;
-}
+export enum ActiveFilterStatus {
+    All = 'all',
+    Fire = 'fire',
+    Water = 'water',
+    Wind = 'wind',
+    Earth = 'earth',
+};
+
+export interface FiltersState {
+   filters: FilterForHero[];
+   filtersLoadingStatus: FiltersStatus;
+   activeFilter: ActiveFilterStatus;
+};

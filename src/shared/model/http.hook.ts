@@ -1,6 +1,7 @@
-export const useHttp = () => {
+import { headerDefault } from "./constants";
 
-    const request = async (url: string, method : string = 'GET', body : BodyInit | null = null, headers : HeadersInit = {'Content-Type': 'application/json'}) => {
+export const useHttp = () => {
+    const request = async (url: string, method : string = 'GET', body : BodyInit | null = null, headers : HeadersInit = headerDefault) => {
         try {
             const response = await fetch(url, {method, body, headers});
 

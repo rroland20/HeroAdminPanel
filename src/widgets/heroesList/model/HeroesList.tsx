@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import { useGetHeroesQuery, useDeleteHeroMutation } from '../../../shared/api/apiSlice';
 import HeroesListItem from "../ui/HeroesListItem";
 import Spinner from '../../spinner/ui/Spinner';
-import { ISomeState } from '../../heroesFilters/model/types';
+import { FiltersState, ActiveFilterStatus } from '../../heroesFilters/model/types';
 import { HeroesListType } from './types';
 
 import './heroesList.scss';
@@ -18,17 +18,17 @@ const HeroesList = () => {
         isError,
     } = useGetHeroesQuery({});
 
-    const activeFilter = useSelector((state: { filters: ISomeState }) => state.filters.activeFilter);
+    const activeFilter = useSelector((state: { filters: FiltersState }) => state.filters.activeFilter);
     
     const [deleteHero] = useDeleteHeroMutation();
 
     const filteredHeroes = useMemo (() => {
         const filteredHeroes = heroes.slice()
-        if (activeFilter === 'all') {
+        if (activeFilter === ActiveFilterStatus.All) {
             return filteredHeroes;
         }
         else {
-            return filteredHeroes.filter((item: HeroesListType) => item.element === activeFilter)
+            return filteredHeroes.filter((item: HeroesListType) => item.element === activeFilter ? item : null)
         }
         // eslint-disable-next-line
     }, [heroes, activeFilter])
@@ -46,7 +46,7 @@ const HeroesList = () => {
     }
 
     const renderHeroesList = (arr : HeroesListType[]) => {
-        if (arr.length === 0) {
+        if (!arr.length) {
             return <CSSTransition 
                         timeout={0}
                         classNames="hero">
