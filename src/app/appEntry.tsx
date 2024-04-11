@@ -1,6 +1,6 @@
 import HeroesList from '../widgets/heroesList/model/HeroesList';
 import HeroesAddForm from '../widgets/heroesAddForm/HeroesAddForm';
-import HeroesFilters from '../widgets/heroesFilters/HeroesFilters';
+import HeroesFilters from '../widgets/heroesFilters/ui/HeroesFilters';
 
 import './app.scss';
 

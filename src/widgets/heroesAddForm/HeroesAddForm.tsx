@@ -3,18 +3,19 @@ import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 
 import { useCreateHeroMutation } from "../../shared/api/apiSlice";
-
+import { tFilterForHero, iFiltersState } from "../heroesFilters/model/types";
+import { eFiltersStatus, eActiveFilterStatus } from "../heroesFilters/model/types";
 
 const HeroesAddForm = () => {
-    const [nameHero, setNameHero] = useState();
-    const [descrHero, setDescrHero] = useState();
-    const [elemHero, setElemHero] = useState();
+    const [nameHero, setNameHero] = useState<string>();
+    const [descrHero, setDescrHero] = useState<string>();
+    const [elemHero, setElemHero] = useState<string>();
 
     const [createHero] = useCreateHeroMutation();
+    
+    const {filters, filtersLoadingStatus} = useSelector((state: { filters: iFiltersState }) => state.filters);
 
-    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
-
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newHero = {
             id: uuidv4(),
@@ -31,18 +32,18 @@ const HeroesAddForm = () => {
         
     }
 
-    const selectElement = (filters, status) => {
-        if (status === "loading") {
+    const selectElement = (filters: Array<tFilterForHero>, status: string) => {
+        if (status === eFiltersStatus.Loading) {
             return <option>Загрузка элементов</option>
         }
-        else if (status === "error") {
+        else if (status === eFiltersStatus.Error) {
             return <option>Ошибка загрузки элементов</option>
         }
 
         if (filters && filters.length > 0) {
-            return filters.map(({name, label}) => {
+            return filters.map(({name, label}: tFilterForHero) => {
                 // eslint-disable-next-line
-                if (name === 'all') return;
+                if (name === eActiveFilterStatus.All) return;
 
                 return <option key={name} value={name}>{label}</option>;
             })

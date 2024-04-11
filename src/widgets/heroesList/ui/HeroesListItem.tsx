@@ -1,19 +1,21 @@
+import { tHeroesList } from "../model/types";
+import { eActiveFilterStatus } from "../../heroesFilters/model/types";
 
-const HeroesListItem = ({name, description, element, onDelete}) => {
+const HeroesListItem = ({name, description, element, onDelete} : tHeroesList) => {
 
-    let elementClassName;
+    let elementClassName: string;
 
     switch (element) {
-        case 'fire':
+        case eActiveFilterStatus.Fire:
             elementClassName = 'bg-danger bg-gradient';
             break;
-        case 'water':
+        case eActiveFilterStatus.Water:
             elementClassName = 'bg-primary bg-gradient';
             break;
-        case 'wind':
+        case eActiveFilterStatus.Wind:
             elementClassName = 'bg-success bg-gradient';
             break;
-        case 'earth':
+        case eActiveFilterStatus.Earth:
             elementClassName = 'bg-secondary bg-gradient';
             break;
         default:
