@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 
-import { useCreateHeroMutation } from "../../shared/api/apiSlice";
+import { useCreateHeroMutation } from "@/shared/api/apiSlice";
 import { tFilterForHero, iFiltersState } from "../heroesFilters/model/types";
 import { eFiltersStatus, eActiveFilterStatus } from "../heroesFilters/model/types";
 
